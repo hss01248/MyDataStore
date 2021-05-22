@@ -12,6 +12,10 @@ import com.tencent.mmkv.MMKVLogLevel;
 
 import java.util.Set;
 
+/**
+ * 无缝迁移
+ * https://www.jianshu.com/p/43ce8a7ed62e
+ */
 public class MmkvImpl extends BaseKV{
 
 
