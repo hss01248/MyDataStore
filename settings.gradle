@@ -1,0 +1,3 @@
+include ':mydatastore'
+include ':app'
+rootProject.name = "MyDataStore"
