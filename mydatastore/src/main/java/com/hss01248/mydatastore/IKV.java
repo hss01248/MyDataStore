@@ -5,6 +5,7 @@ import android.text.TextUtils;
 
 import com.google.gson.Gson;
 
+import java.util.Map;
 import java.util.Set;
 
 public interface IKV {
@@ -39,6 +40,18 @@ public interface IKV {
     void putLong(String name, String key, long value);
 
     long getLong(String name, String key, long defValue);
+
+    byte[]  getBytes(String name, String key, byte[] defValue);
+
+    void putBytes(String name, String key, byte[] value);
+
+    default byte[] getBytes( String key, byte[] defValue){
+        return getBytes("",key,defValue);
+    }
+
+   default void putBytes( String key, byte[] value){
+        putBytes("",key,value);
+   }
 
    default void putObj(String name, String key, Object value){
        try {
@@ -77,6 +90,26 @@ public interface IKV {
     void clear(String name);
 
     boolean contains(String name, String key);
+
+    Map<String, ?> getAll(String name);
+
+    default void remove( String key){
+        remove("",key);
+    }
+
+    default void clear(){
+        clear("");
+    }
+
+   default boolean contains( String key){
+        return contains("",key);
+   }
+
+   default Map<String, ?> getAll(){
+        return getAll("");
+   }
+
+
 
 
 

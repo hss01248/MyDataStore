@@ -3,7 +3,9 @@ package com.hss01248.mydatastore;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Base64;
 
+import java.util.Map;
 import java.util.Set;
 
 public class SpKvImpl extends BaseKV{
@@ -97,20 +99,38 @@ public class SpKvImpl extends BaseKV{
         return getSP(name).getLong(key, defValue);
     }
 
+    @Override
+    public byte[] getBytes(String name, String key, byte[] defValue) {
+        String str = getString(name,key,null);
+        if(str != null){
+          return   Base64.decode(str,0);
+        }
+        return defValue;
+    }
+
+    @Override
+    public void putBytes(String name, String key, byte[] value) {
+        putString(name,key,Base64.encodeToString(value,0));
+    }
 
 
     @Override
     public void remove(String name, String key) {
-
+        getSP(name).edit().remove(key).apply();
     }
 
     @Override
     public void clear(String name) {
-
+        getSP(name).edit().clear().apply();
     }
 
     @Override
     public boolean contains(String name, String key) {
         return  getSP(name).contains(key);
+    }
+
+    @Override
+    public Map<String, ?> getAll(String name) {
+        return getSP(name).getAll();
     }
 }

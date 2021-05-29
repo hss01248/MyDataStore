@@ -2,6 +2,7 @@ package com.hss01248.mydatastore;
 
 import android.app.Application;
 
+import java.util.Map;
 import java.util.Set;
 
 public class KvUtil {
@@ -186,4 +187,54 @@ public class KvUtil {
     public static <T> T getObj(String key, Class<T> clazz, T defValue) {
         return kv.getObj(key, clazz, defValue);
     }
+
+    public static byte[]  getBytes(String name, String key, byte[] defValue){
+        return kv.getBytes(name, key, defValue);
+    }
+
+    public static void putBytes(String name, String key, byte[] value){
+        kv.putBytes(name, key, value);
+    }
+
+    public static byte[] getBytes( String key, byte[] defValue){
+        return kv.getBytes(key, defValue);
+    }
+
+    public static void putBytes( String key, byte[] value){
+        kv.putBytes(key, value);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public static void remove( String key){
+        kv.remove(key);
+    }
+
+    public static void clear(){
+        kv.clear();
+    }
+
+    public static boolean contains( String key){
+        return kv.contains(key);
+    }
+
+    public static Map<String, ?> getAll(){
+        return kv.getAll();
+    }
+
+
 }
