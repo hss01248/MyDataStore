@@ -1,7 +1,12 @@
 package com.hss01248.mydatastore;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
 
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 import java.util.Map;
 import java.util.Set;
 
@@ -10,7 +15,33 @@ public class KvUtil {
 
     public static void init(Application app, IKV kv) {
         KvUtil.kv = kv;
+        if(kv instanceof MmkvImpl){
+            IKV sp = new SpKvImpl();
+            IKV finalKv = kv;
+            //mmkv不可用时,降级到sharedPrefences
+            kv = (IKV) Proxy.newProxyInstance(IKV.class.getClassLoader(), kv.getClass().getInterfaces(), new InvocationHandler() {
+                @Override
+                public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                    try {
+                      return   method.invoke(finalKv,args);
+                    }catch (Throwable throwable){
+                        throwable.printStackTrace();
+                        return   method.invoke(sp,args);
+                    }
+
+                }
+            });
+        }
         kv.init(app);
+    }
+
+     static boolean isApkInDebug(Context context) {
+        try {
+            ApplicationInfo info = context.getApplicationInfo();
+            return (info.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 

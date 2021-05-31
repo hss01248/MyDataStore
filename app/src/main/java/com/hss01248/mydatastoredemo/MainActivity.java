@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        KvUtil.init(getApplication(),new MmkvImpl());
+        //KvUtil.init(getApplication(),new MmkvImpl());
         setContentView(R.layout.activity_main);
 
         KvUtil.putString("uuid","89dsjifjeu8hfueismfle");

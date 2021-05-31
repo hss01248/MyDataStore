@@ -73,7 +73,10 @@ public class MmkvImpl extends BaseKV{
         } else {
             MMKV.initialize(context);
         }
-        MMKV.setLogLevel(MMKVLogLevel.LevelDebug);
+        MMKV.setLogLevel(KvUtil.isApkInDebug(app) ? MMKVLogLevel.LevelDebug : MMKVLogLevel.LevelWarning);
+        if(!KvUtil.isApkInDebug(app)){
+            setEncrypt(true,app.getPackageName().replace(".","_"));
+        }
     }
 
     @Override
