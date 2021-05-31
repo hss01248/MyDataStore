@@ -25,6 +25,18 @@
 
 ![image-20210531103836477](https://gitee.com/hss012489/picbed/raw/master/picgo/1622428723009-image-20210531103836477.jpg)
 
+```java
+//变化监听
+static void addValueChangeCallback(String name,String key,ValueChangeCallback callback)
+  
+  public interface ValueChangeCallback {
+
+    void onChanged(Object value);
+}
+```
+
+
+
 
 # gradle
 
