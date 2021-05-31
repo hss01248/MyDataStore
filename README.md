@@ -1,5 +1,10 @@
 #  统一sharedprefences和mmkv的使用
 
+
+
+
+[想看MMKV, DataStore, 数据库, Sp 性能大比拼，来了](https://mp.weixin.qq.com/s/vimX6bnJDkPbXAqVJCbbfw)
+
 * 使用jetpack startup库自动初始化.
 
 * debug时,未加密,非debug时,加密存储.
