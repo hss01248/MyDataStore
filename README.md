@@ -26,6 +26,24 @@
 ![image-20210531103836477](https://gitee.com/hss012489/picbed/raw/master/picgo/1622428723009-image-20210531103836477.jpg)
 
 
+# gradle
+
+[![](https://jitpack.io/v/hss01248/MyDataStore.svg)](https://jitpack.io/#hss01248/MyDataStore)
+
+Add it in your root build.gradle at the end of repositories:
+
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+Step 2. Add the dependency
+
+	dependencies {
+	        implementation 'com.github.hss01248:MyDataStore:1.0.0'
+	}
+
 
 
 
