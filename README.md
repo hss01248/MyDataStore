@@ -53,7 +53,7 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.hss01248:MyDataStore:1.0.0'
+	        implementation 'com.github.hss01248:MyDataStore:1.0.1'
 	}
 
 
@@ -75,9 +75,9 @@ buildscript {
 
 
 
+# 一些参考资料
 
-
-# [想看MMKV, DataStore, 数据库, Sp 性能大比拼，来了](https://mp.weixin.qq.com/s/vimX6bnJDkPbXAqVJCbbfw)
+## [想看MMKV, DataStore, 数据库, Sp 性能大比拼，来了](https://mp.weixin.qq.com/s/vimX6bnJDkPbXAqVJCbbfw)
 
 ![image-20210531110421918](https://gitee.com/hss012489/picbed/raw/master/picgo/1622430261955-image-20210531110421918.jpg)
 
@@ -91,5 +91,4 @@ buildscript {
 
 ![image-20210531110504985](https://gitee.com/hss012489/picbed/raw/master/picgo/1622430305011-image-20210531110504985.jpg)
 
-
-
+[Android 轻量级存储方案的前世今生（SharedPreferences、MMKV、Jetpack DataStore）](https://www.jianshu.com/p/e2113f501cf9)
