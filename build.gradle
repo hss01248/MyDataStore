@@ -26,3 +26,22 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+gradle.addProjectEvaluationListener(new ProjectEvaluationListener() {
+    @Override
+    void beforeEvaluate(Project project) {
+
+    }
+
+    @Override
+    void afterEvaluate(Project project, ProjectState projectState) {
+        dealProject(project)
+
+    }
+})
+
+def dealProject(project){
+    project.dependencies.each {
+        println(it)
+    }
+}
