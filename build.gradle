@@ -1,6 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    apply from: 'https://raw.githubusercontent.com/hss01248/flipperUtil/master/remote2.gradle'
+    //apply from: 'https://raw.githubusercontent.com/hss01248/flipperUtil/master/remote2.gradle'
+    apply from: 'test.gradle'
     repositories {
         google()
         jcenter()
@@ -27,21 +28,3 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-gradle.addProjectEvaluationListener(new ProjectEvaluationListener() {
-    @Override
-    void beforeEvaluate(Project project) {
-
-    }
-
-    @Override
-    void afterEvaluate(Project project, ProjectState projectState) {
-        dealProject(project)
-
-    }
-})
-
-def dealProject(project){
-    project.dependencies.each {
-        println(it)
-    }
-}

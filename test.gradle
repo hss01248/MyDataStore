@@ -1,0 +1,55 @@
+import javax.annotation.Nullable
+
+gradle.addProjectEvaluationListener(new ProjectEvaluationListener() {
+    @Override
+    void beforeEvaluate(Project project) {
+
+    }
+
+    @Override
+    void afterEvaluate(Project project, ProjectState projectState) {
+        println("after eva---->")
+        //dealProject(project)
+
+    }
+})
+
+task("doall"){
+    group('upload')
+    doLast {
+        rootProject.subprojects {
+            dealProject(it)
+        }
+    }
+
+}
+
+def dealProject(project){
+
+    println("------------>"+project.getName())
+    //"api"
+    println("impl deps:"+project.configurations.findByName("implementation")?.dependencies)
+    println("api deps:"+project.configurations.findByName("api")?.dependencies)
+    println("compile deps:"+project.configurations.findByName("compile")?.dependencies)
+
+    def depsall = project.configurations.findByName("implementation")?.dependencies;
+    def deps = project.configurations.findByName("implementation")?.dependencies?.findAll {
+        it.hasProperty("dependencyProject")
+    }
+    deps.each {
+        println("remove imp:"+it)
+        depsall.remove(it)
+    }
+    println("after impl deps:"+project.configurations.findByName("implementation")?.dependencies)
+    project.dependencies {
+        implementation 'com.google.code.gson:gson:2.8.6'
+    }
+
+   // depsall.add("implementation",'com.google.android.material:material:1.3.0')
+    println("after add impl :"+project.configurations.findByName("implementation")?.dependencies)
+    /*project.configurations.findByName("implementation")?.dependencies?.findAll {
+        it.hasProperty("dependencyProject")
+    }?.each {
+        println("imp:"+it)
+    }*/
+}
