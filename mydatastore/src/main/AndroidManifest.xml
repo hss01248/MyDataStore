@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.hss01248.mydatastore">
+    <uses-sdk tools:overrideLibrary="com.tencent.mmkv"/>
     <application >
         <!--<provider
             android:authorities="${applicationId}.cp"
